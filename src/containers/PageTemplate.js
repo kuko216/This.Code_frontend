@@ -5,6 +5,7 @@ import oc from 'open-color';
 
 import { NavLink, Route } from 'react-router-dom';
 
+import DashBoard from 'components/DashBoard';
 import ProblemList from 'components/ProblemList';
 import SolveLog from 'components/SolveLog';
 import Rank from 'components/Rank';
@@ -26,6 +27,7 @@ const SideNav = styled.div`
 const Content = styled.div`
     width: 100%;
     height: 100%;
+    padding: 30px;
 `
 
 const UserProfile = styled.div`
@@ -49,7 +51,6 @@ const NavItem = styled(NavLink)`
     height: 50px;
     width: 100%;
     box-sizing: border-box;
-    border-right: 3px solid ${oc.gray[4]};
     padding-left: 30px;
     color: ${oc.gray[8]};
     &:link{
@@ -59,7 +60,7 @@ const NavItem = styled(NavLink)`
         text-decoration: none;
     }
     &:hover{
-        background-color: ${oc.gray[0]}
+        background-color: ${oc.gray[0]};
         text-decoration: none;
     }
     &:active{
@@ -68,7 +69,7 @@ const NavItem = styled(NavLink)`
 
     &.active{
         color: ${oc.indigo[7]};
-        border-right: 3px solid ${oc.indigo[5]};
+        border-right: 5px solid ${oc.indigo[5]};
     }
 `
 
@@ -90,12 +91,13 @@ class PageTemplate extends React.Component {
                     </UserProfile>
                     <NavItem exact to="/" activeClassName="active"><NavText>홈</NavText></NavItem>
                     <NavItem to="/solvelog" activeClassName="active"><NavText>풀이 현황</NavText></NavItem>
-                    <NavItem to="/problem" activeClassName="active"><NavText>문제</NavText></NavItem>
+                    <NavItem to="/problems" activeClassName="active"><NavText>문제</NavText></NavItem>
                     <NavItem to="/rank" activeClassName="active"><NavText>랭킹</NavText></NavItem>
                 </SideNav>
                 <Content>
+                    <Route exact path="/" component={DashBoard}/>
                     <Route path="/solvelog" component={SolveLog}/>
-                    <Route path="/problem" component={ProblemList}/>
+                    <Route path="/problems" component={ProblemList}/>
                     <Route path="/rank" component={Rank}/>
                 </Content>
             </Wrapper>     
