@@ -5,6 +5,8 @@ import oc from 'open-color';
 
 import ProblemTableRow from './ProblemTableRow';
 
+import * as ProblemApi from 'api/problem';
+
 const Title = styled.h1`
     margin: 0;
 `
@@ -40,6 +42,21 @@ const PTitle = styled.td`
 
 
 class ProblemList extends React.Component {
+
+    state = {
+        problemList: []
+    }
+
+    componentDidMount(){
+        ProblemApi.getList()
+        .then((result) => {
+            console.log(result);
+        })
+        .catch((result) => {
+            console.log(result);
+        })
+    }
+
     render(){
         return (
             <>
