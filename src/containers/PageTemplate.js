@@ -6,6 +6,8 @@ import oc from 'open-color';
 import { NavLink, Route } from 'react-router-dom';
 
 import ProblemList from 'components/ProblemList';
+import SolveLog from 'components/SolveLog';
+import Rank from 'components/Rank';
 
 const Wrapper = styled.div`
     display: flex;
@@ -17,6 +19,8 @@ const SideNav = styled.div`
     background-color: white;
     height: 100%;
     width: 300px;
+    display: flex;
+    flex-direction: column;
 `
 
 const Content = styled.div`
@@ -24,7 +28,7 @@ const Content = styled.div`
     height: 100%;
 `
 
-const NavContent = styled.div`
+const UserProfile = styled.div`
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -41,19 +45,35 @@ const UserIntro = styled.span`
     overflow-wrap: break-word;
 `
 
+const NavItem = styled(NavLink)`
+    height: 30px;
+    width: 100%;
+    background-color: ${oc.gray[1]};
+    box-sizing: border-box;
+    border-right: 3px solid ${oc.gray[4]};
+    &.active{
+        border-right: 3px solid ${oc.gray[7]};
+    }
+`
+
 class PageTemplate extends React.Component {
     render(){
         return (
             <Wrapper>
                 <SideNav>
-                    <NavContent>
+                    <UserProfile>
                         <Username>Haya0206</Username>
                         <UserIntro>I love codeup.</UserIntro>
-                        <NavLink to="/problem" className="item">문제</NavLink>
-                    </NavContent>
+                    </UserProfile>
+                    <NavItem exact to="/" activeClassName="active">홈</NavItem>
+                    <NavItem to="/solvelog" activeClassName="active">풀이 현황</NavItem>
+                    <NavItem to="/problem" activeClassName="active">문제</NavItem>
+                    <NavItem to="/rank" activeClassName="active">랭킹</NavItem>
                 </SideNav>
                 <Content>
+                    <Route path="/solvelog" component={SolveLog}/>
                     <Route path="/problem" component={ProblemList}/>
+                    <Route path="/rank" component={Rank}/>
                 </Content>
             </Wrapper>     
         )
