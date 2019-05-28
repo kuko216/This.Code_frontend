@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 const SideNav = styled.div`
     background-color: white;
     height: 100%;
-    width: 300px;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
 `
@@ -46,14 +46,37 @@ const UserIntro = styled.span`
 `
 
 const NavItem = styled(NavLink)`
-    height: 30px;
+    height: 50px;
     width: 100%;
-    background-color: ${oc.gray[1]};
     box-sizing: border-box;
     border-right: 3px solid ${oc.gray[4]};
-    &.active{
-        border-right: 3px solid ${oc.gray[7]};
+    padding-left: 30px;
+    color: ${oc.gray[8]};
+    &:link{
+        text-decoration: none;
     }
+    &:visited{
+        text-decoration: none;
+    }
+    &:hover{
+        background-color: ${oc.gray[0]}
+        text-decoration: none;
+    }
+    &:active{
+        text-decoration: none;
+    }
+
+    &.active{
+        color: ${oc.indigo[7]};
+        border-right: 3px solid ${oc.indigo[5]};
+    }
+`
+
+const NavText = styled.h3`
+    margin: 0;
+    line-height: 50px;
+    font-size: 1.5rem;
+    font-weight: normal;
 `
 
 class PageTemplate extends React.Component {
@@ -65,10 +88,10 @@ class PageTemplate extends React.Component {
                         <Username>Haya0206</Username>
                         <UserIntro>I love codeup.</UserIntro>
                     </UserProfile>
-                    <NavItem exact to="/" activeClassName="active">홈</NavItem>
-                    <NavItem to="/solvelog" activeClassName="active">풀이 현황</NavItem>
-                    <NavItem to="/problem" activeClassName="active">문제</NavItem>
-                    <NavItem to="/rank" activeClassName="active">랭킹</NavItem>
+                    <NavItem exact to="/" activeClassName="active"><NavText>홈</NavText></NavItem>
+                    <NavItem to="/solvelog" activeClassName="active"><NavText>풀이 현황</NavText></NavItem>
+                    <NavItem to="/problem" activeClassName="active"><NavText>문제</NavText></NavItem>
+                    <NavItem to="/rank" activeClassName="active"><NavText>랭킹</NavText></NavItem>
                 </SideNav>
                 <Content>
                     <Route path="/solvelog" component={SolveLog}/>
