@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 
-import ProblemTableRow from './ProblemTableRow';
+import ProblemCard from './ProblemCard';
 
 import * as ProblemApi from 'api/problem';
 
@@ -11,35 +11,28 @@ const Title = styled.h1`
     margin: 0;
 `
 
-const Table = styled.table`
-    margin: 30px auto;
-    border-collapse: collapse;
-    text-align: left;
-    line-height: 1.5;
+const ProblemListWrapper = styled.div`
+    margin-top: 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 `
 
-const Head = styled.thead`
-    border-right: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    background: ${oc.indigo[5]};
-`
-
-const Number = styled.td`
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    color: white;
-`
-
-const PTitle = styled.td`
-    width: 300px;
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    border-bottom: 1px solid #ccc;
-    color: white;
-`
-
+const testList = [
+    {
+        title: 'dubtest1'
+    },
+    {
+        title: 'dubtest2'
+    },
+    {
+        title: 'dubtest3'
+    },
+    {
+        title: 'dubtest4'
+    }
+]
 
 class ProblemList extends React.Component {
 
@@ -61,13 +54,15 @@ class ProblemList extends React.Component {
         return (
             <>
                 <Title>문제 리스트</Title>
-                <Table>
-                    <Head>
-                        <Number>문제번호</Number>
-                        <PTitle>문제명</PTitle>
-                    </Head>
-                    <ProblemTableRow />
-                </Table>
+                <ProblemListWrapper>
+                    {testList.map((p, index) => 
+                        <ProblemCard 
+                            index={index}
+                            title={p.title}
+                            key={index} 
+                        />    
+                    )}
+                </ProblemListWrapper>
             </>
         )
     }

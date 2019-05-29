@@ -14,6 +14,7 @@ const Wrapper = styled.div`
     display: flex;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 `
 
 const SideNav = styled.div`
@@ -28,6 +29,7 @@ const Content = styled.div`
     width: 100%;
     height: 100%;
     padding: 30px;
+    overflow: auto;
 `
 
 const UserProfile = styled.div`
@@ -81,6 +83,7 @@ const NavText = styled.h3`
 `
 
 class PageTemplate extends React.Component {
+
     render(){
         return (
             <Wrapper>
