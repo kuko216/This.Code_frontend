@@ -20,6 +20,7 @@ const WhiteBox = styled.div`
     margin: 0 auto;
     width: 1000px;
     background-color: white;
+    box-sizing: border-box;
     border-radius: 3px;
     margin-bottom: 5px;
 
@@ -41,11 +42,12 @@ const Wrapper = styled.div`
     padding: 30px;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 `
 
 const Number = styled.h3`
     margin: 0;
-    color: ${oc.indigo[5]};
+    color: ${oc.red[5]};
 `
 
 const Title = styled.h1`
@@ -68,14 +70,14 @@ const MiniTitle = styled.h2`
 const Border = styled.div`
     width: 60px;
     height: 3px;
-    background-color: ${oc.indigo[7]};
+    background-color: ${oc.red[7]};
     margin: 10px 0px;
 `
 
 const LongBorder = styled.div`
     width: 120px;
     height: 3px;
-    background-color: ${oc.indigo[7]};
+    background-color: ${oc.red[7]};
     margin: 10px 0px;
 `
 
@@ -87,7 +89,7 @@ const MiniDesc = styled.h3`
 
 const ProblemCard = ({index, title}) => {
     return (
-        <Component className="a">
+        <Component>
             <WhiteBox>
                 <Wrapper>
                     <Number>{numberFormat(1)}번 문제</Number>

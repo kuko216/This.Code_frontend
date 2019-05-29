@@ -31,7 +31,7 @@ const WhiteBox = styled(Link)`
         text-decoration: none;
     }
     &:hover{
-        background-color: ${oc.indigo[0]};
+        background-color: ${oc.gray[0]};
         text-decoration: none;
     }
     &:active{
@@ -50,7 +50,7 @@ const Index = styled.h3`
     margin: 0;
     margin-right: 30px;
     margin-left: 10px;
-    color: ${oc.indigo[7]};
+    color: ${oc.red[5]};
 `
 
 const Title = styled.h3`

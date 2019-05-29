@@ -37,8 +37,6 @@ const Rank = styled.h3`
     margin-left: 10px;
     margin-right: 30px;
     color: ${oc.gray[9]};
-
-
 `
 
 const Name = styled.h3`
