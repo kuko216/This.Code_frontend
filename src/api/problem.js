@@ -9,7 +9,9 @@ export const getList = ({token}) =>
   });
 
 export const detailProblem = ({ index }) =>
-  axios.post("http://localhost:4000/api/problem/detail", { index });
+  axios.post("http://localhost:4000/api/problem/detail",
+  { index }
+);
 
 export const ShowLog = () =>
   axios.get("http://localhost:4000/api/problem/showLog", {

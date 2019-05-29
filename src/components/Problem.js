@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
+import { observable, action } from 'mobx'
+import { observer, inject } from 'mobx-react'
+
+import * as ProblemApi from 'api/problem';
 
 const numberFormat = (n) => {
     const str = "" + n;
@@ -86,43 +90,80 @@ const MiniDesc = styled.h3`
     margin-top: 20px;
 `
 
+@inject('userStore')
+@observer
+class ProblemCard extends React.Component{
 
-const ProblemCard = ({index, title}) => {
-    return (
-        <Component>
-            <WhiteBox>
-                <Wrapper>
-                    <Number>{numberFormat(1)}번 문제</Number>
-                    <Title>Dub Test 01</Title>
-                    <DescWrapper>
-                        <MiniTitle>문제</MiniTitle>
-                        <Border />
-                        <MiniDesc>정수(integer) 한개를 입력받아 3번 출력해보자.</MiniDesc>
-                    </DescWrapper>
-                    <DescWrapper>
-                        <MiniTitle>입력</MiniTitle>
-                        <Border />
-                        <MiniDesc>정수 한 개가 입력된다.</MiniDesc>
-                    </DescWrapper>
-                    <DescWrapper>
-                        <MiniTitle>출력</MiniTitle>
-                        <Border />
-                        <MiniDesc>입력받은 정수를 공백으로 구분해 세 번 출력한다.</MiniDesc>
-                    </DescWrapper>
-                    <DescWrapper>
-                        <MiniTitle>입력 예시</MiniTitle>
-                        <LongBorder />
-                        <MiniDesc>120</MiniDesc>
-                    </DescWrapper>
-                    <DescWrapper>
-                        <MiniTitle>출력 예시</MiniTitle>
-                        <LongBorder />
-                        <MiniDesc>120 120 120</MiniDesc>
-                    </DescWrapper>
-                </Wrapper>
-            </WhiteBox>
-        </Component>
-    );
+    state = {
+        index: this.props.match.params.index,
+        title: '',
+        description: '',
+        input: '',
+        output: '',
+        exInput: '',
+        exOutput: ''
+    }
+
+    componentDidMount(){
+        const { index } = this.state;
+
+        ProblemApi.detailProblem({ index })
+        .then((result) => {
+            console.log(result);
+            this.setState({
+                title: result.data.title,
+                description: result.data.description,
+                input: result.data.input,
+                output: result.data.output,
+                exInput: result.data.exInput,
+                exOutput: result.data.exOutput
+            });
+        })
+        .catch((result) => {
+            console.log(result);
+        });
+    }
+
+    render(){
+
+        const { index, title, description, input, output, exInput, exOutput } = this.state;
+
+        return (
+            <Component>
+                <WhiteBox>
+                    <Wrapper>
+                        <Number>{numberFormat(index)}번 문제</Number>
+                        <Title>{title}</Title>
+                        <DescWrapper>
+                            <MiniTitle>문제</MiniTitle>
+                            <Border />
+                            <MiniDesc>{description}</MiniDesc>
+                        </DescWrapper>
+                        <DescWrapper>
+                            <MiniTitle>입력</MiniTitle>
+                            <Border />
+                            <MiniDesc>{input}</MiniDesc>
+                        </DescWrapper>
+                        <DescWrapper>
+                            <MiniTitle>출력</MiniTitle>
+                            <Border />
+                            <MiniDesc>{output}</MiniDesc>
+                        </DescWrapper>
+                        <DescWrapper>
+                            <MiniTitle>입력 예시</MiniTitle>
+                            <LongBorder />
+                            <MiniDesc>{exInput}</MiniDesc>
+                        </DescWrapper>
+                        <DescWrapper>
+                            <MiniTitle>출력 예시</MiniTitle>
+                            <LongBorder />
+                            <MiniDesc>{exOutput}</MiniDesc>
+                        </DescWrapper>
+                    </Wrapper>
+                </WhiteBox>
+            </Component>
+        );
+    }
 };
 
 export default ProblemCard;
