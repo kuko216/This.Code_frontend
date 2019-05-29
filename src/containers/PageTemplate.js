@@ -5,7 +5,7 @@ import oc from 'open-color';
 
 import { NavLink, Route } from 'react-router-dom';
 
-import DashBoard from 'components/DashBoard';
+import Intro from 'components/Intro';
 import ProblemList from 'components/ProblemList';
 import Problem from 'components/Problem';
 import SolveLog from 'components/SolveLog';
@@ -40,7 +40,8 @@ const SideNav = styled.div`
 
 const Content = styled.div`
     width: 100%;
-    padding: 30px;
+    height: 100%;
+    //padding: 30px;
     overflow: auto;
     box-sizing: border-box;
 `
@@ -128,7 +129,7 @@ class PageTemplate extends React.Component {
                     <NavItem to="/rank" activeClassName="active"><NavText>랭킹</NavText></NavItem>
                 </SideNav>
                 <Content>
-                    <Route exact path="/" component={DashBoard}/>
+                    <Route exact path="/" component={Intro}/>
                     <Route path="/solvelog" component={SolveLog}/>
                     <Route path="/problems" component={ProblemList}/>
                     <Route path="/problem/:index" component={Problem}/>
