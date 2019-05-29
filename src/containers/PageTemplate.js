@@ -7,8 +7,10 @@ import { NavLink, Route } from 'react-router-dom';
 
 import DashBoard from 'components/DashBoard';
 import ProblemList from 'components/ProblemList';
+import Problem from 'components/Problem';
 import SolveLog from 'components/SolveLog';
 import Rank from 'components/Rank';
+
 
 const Wrapper = styled.div`
     display: flex;
@@ -27,7 +29,6 @@ const SideNav = styled.div`
 
 const Content = styled.div`
     width: 100%;
-    height: 100%;
     padding: 30px;
     overflow: auto;
 `
@@ -101,6 +102,7 @@ class PageTemplate extends React.Component {
                     <Route exact path="/" component={DashBoard}/>
                     <Route path="/solvelog" component={SolveLog}/>
                     <Route path="/problems" component={ProblemList}/>
+                    <Route path="/problem/:index" component={Problem}/>
                     <Route path="/rank" component={Rank}/>
                 </Content>
             </Wrapper>     

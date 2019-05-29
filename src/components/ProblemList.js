@@ -5,6 +5,7 @@ import oc from 'open-color';
 
 import ProblemCard from './ProblemCard';
 
+
 import * as ProblemApi from 'api/problem';
 
 const Title = styled.h1`
@@ -21,6 +22,50 @@ const ProblemListWrapper = styled.div`
 
 const testList = [
     {
+        title: 'dubtest1'
+    },
+    {
+        title: 'dubtest2'
+    },
+    {
+        title: 'dubtest3'
+    },
+    {
+        title: 'dubtest4'
+    },{
+        title: 'dubtest1'
+    },
+    {
+        title: 'dubtest2'
+    },
+    {
+        title: 'dubtest3'
+    },
+    {
+        title: 'dubtest4'
+    },{
+        title: 'dubtest1'
+    },
+    {
+        title: 'dubtest2'
+    },
+    {
+        title: 'dubtest3'
+    },
+    {
+        title: 'dubtest4'
+    },{
+        title: 'dubtest1'
+    },
+    {
+        title: 'dubtest2'
+    },
+    {
+        title: 'dubtest3'
+    },
+    {
+        title: 'dubtest4'
+    },{
         title: 'dubtest1'
     },
     {
@@ -57,7 +102,7 @@ class ProblemList extends React.Component {
                 <ProblemListWrapper>
                     {testList.map((p, index) => 
                         <ProblemCard 
-                            index={index}
+                            index={index+1}
                             title={p.title}
                             key={index} 
                         />    
