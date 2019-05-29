@@ -18,5 +18,5 @@ export const checkStatus = ({ token }) =>
       }
   });
 
-export const findUserById = ({ id }) => 
-  axios.get("http://localhost:4000/api/auth/findUser/"+id);
+export const ranking = () =>
+  axios.get("http://localhost:4000/api/auth/ranking");

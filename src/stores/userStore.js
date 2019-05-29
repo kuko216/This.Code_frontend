@@ -23,7 +23,7 @@ class userStore {
     authApi.checkStatus({ token })
     .then((result) => {
       console.log('store 인증 성공');
-      console.log(result)
+      //console.log(result)
       this.username = result.data.username;
       this.description = result.data.description;
     })

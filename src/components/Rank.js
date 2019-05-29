@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
+import * as AuthApi from 'api/auth';
 
 import RankCard from './RankCard';
 
@@ -40,15 +41,33 @@ const RankList = [
 ]
 
 class Rank extends React.Component {
+
+    state = {
+        rankList: []
+    }
+
+    componentDidMount(){
+        AuthApi.ranking()
+        .then((result)=>{
+            this.setState({
+                rankList: result.data
+            });
+            console.log(result);
+        })
+        .catch((result) => {
+            console.log(result);
+        })
+    }
+
     render(){
         return (
             <Wrapper>
                 <Title>유저 랭킹</Title>
                 <RankListWrapper>
-                    {RankList.map((r, index) =>
+                    {this.state.rankList.map((r, index) =>
                         <RankCard 
-                            name={r.name}
-                            solvedProblem={r.solvedProblem}
+                            name={r.username}
+                            solvedProblem={r.point}
                             desc={r.desc}
                             index={index+1}
                             key={index}
