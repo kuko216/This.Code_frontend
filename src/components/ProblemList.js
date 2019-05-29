@@ -3,6 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 
+import { observable, action } from 'mobx'
+import { observer, inject } from 'mobx-react'
+
 import ProblemCard from './ProblemCard';
 
 import * as ProblemApi from 'api/problem';
@@ -86,6 +89,8 @@ const testList = [
     }
 ]
 
+@inject('userStore')
+@observer
 class ProblemList extends React.Component {
 
     state = {
@@ -93,9 +98,13 @@ class ProblemList extends React.Component {
     }
 
     componentDidMount(){
-        ProblemApi.getList()
+        const { token } = this.props.userStore;
+
+        ProblemApi.getList({token})
         .then((result) => {
-            console.log(result);
+            this.setState({
+                problemList: result.data
+            });
         })
         .catch((result) => {
             console.log(result);
@@ -107,10 +116,12 @@ class ProblemList extends React.Component {
             <Wrapper>
                 <Title>문제 리스트</Title>
                 <ProblemListWrapper>
-                    {testList.map((p, index) => 
+                    {this.state.problemList.map((p, index) => 
                         <ProblemCard 
                             index={index+1}
-                            title={p.title}
+                            title={p.name}
+                            tryNum={p.tryNum}
+                            corNum={p.corNum}
                             key={index} 
                         />    
                     )}

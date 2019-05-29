@@ -44,6 +44,7 @@ const CardWrapper = styled.div`
     height: 100%;
     padding: 10px;
     display: flex;
+    box-sizing: border-box;
 `
 
 const Index = styled.h3`
@@ -58,19 +59,35 @@ const Title = styled.h3`
     color: ${oc.gray[9]};
 `
 
+const Spacer = styled.div`
+    flex: 1;
+`
+
+const TryNum = styled.h3`
+    margin: 0;
+    color: ${oc.gray[9]};
+`
+const CorNum = styled.h3`
+    margin: 0 10px;
+    color: ${oc.gray[9]};
+`
+
 const numberFormat = (n) => {
     const str = "" + n;
     const  pad = "0000";
     return pad.substring(0, pad.length - str.length) + str;
 }
 
-const ProblemCard = ({index, title}) => {
+const ProblemCard = ({index, title, tryNum, corNum}) => {
     return (
 
         <WhiteBox to={"/problem/"+index}>
             <CardWrapper>
                 <Index>{numberFormat(index)}</Index>
                 <Title>{title}</Title>
+                <Spacer />
+                <TryNum>시도 횟수 {tryNum}</TryNum>
+                <CorNum>정답 횟수 {corNum}</CorNum>
             </CardWrapper>
         </WhiteBox>
     );
