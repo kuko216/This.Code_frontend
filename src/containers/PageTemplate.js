@@ -3,7 +3,11 @@ import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 
-import { NavLink, Route } from 'react-router-dom';
+import { observable, action } from 'mobx'
+import { observer, inject } from 'mobx-react'
+
+import { Link, NavLink, Route } from 'react-router-dom';
+import { Redirect } from 'react-router'
 
 import Intro from 'components/Intro';
 import ProblemList from 'components/ProblemList';
@@ -118,16 +122,52 @@ const NavItem = styled(NavLink)`
     }
 `
 
-class PageTemplate extends React.Component {
+const ToLogin = styled(Link)`
+    color: ${oc.indigo[6]}
+    font-size: 1.5rem;
 
+    &:link{
+        text-decoration: none;
+    }
+    &:visited{
+        text-decoration: none;
+    }
+    &:hover{
+        color: ${oc.indigo[9]}
+        text-decoration: none;
+    }
+    &:active{
+        text-decoration: none;
+    }
+`
+
+
+@inject('userStore')
+@observer
+class PageTemplate extends React.Component {
+    ReturnUserProfile = () => {
+        const { username, description } = this.props.userStore;
+        if(username && description){
+            return (
+                <UserProfile>
+                    <Username>{username}</Username>
+                    <UserIntro>{description}</UserIntro>
+                </UserProfile>
+            )
+        } else {
+            return (
+                <UserProfile>
+                    <ToLogin to="/auth/signin">로그인 해주세요</ToLogin>
+                </UserProfile>
+            )
+        }
+    }
     render(){
+
         return (
             <Wrapper>
                 <SideNav>
-                    <UserProfile>
-                        <Username>Haya0206</Username>
-                        <UserIntro>I love codeup.</UserIntro>
-                    </UserProfile>
+                    {this.ReturnUserProfile()}
                     <NavItem exact to="/" activeClassName="active"><NavText>홈</NavText></NavItem>
                     <NavItem to="/solvelog" activeClassName="active"><NavText>풀이 현황</NavText></NavItem>
                     <NavItem to="/problems" activeClassName="active"><NavText>문제</NavText></NavItem>

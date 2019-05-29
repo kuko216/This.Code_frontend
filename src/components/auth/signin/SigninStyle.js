@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import oc from 'open-color';
+import { Link } from 'react-router-dom';
 
 export const WhiteBox = styled.div`
     position: fixed;
@@ -41,6 +42,29 @@ export const Input = styled.input`
         padding-left: 0.5rem;
         font-size: 1rem;
     }
+`
+
+export const ToSignUp = styled(Link)`
+    text-align: left;
+    color: ${oc.gray[7]};
+    &:link{
+        text-decoration: none;
+    }
+    &:visited{
+        text-decoration: none;
+    }
+    &:hover{
+        text-decoration: none;
+        color: ${oc.gray[9]};
+    }
+    &:active{
+        text-decoration: none;
+    }
+`
+
+export const H3 = styled.h3`
+    margin: 0;
+    font-size: 1.2rem;
 `
 
 export const LoginButton = styled.button`
