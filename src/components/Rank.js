@@ -5,6 +5,14 @@ import oc from 'open-color';
 
 import RankCard from './RankCard';
 
+const Wrapper = styled.div`
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+`
+
 const Title = styled.h1`
     margin: 0;
 `
@@ -14,6 +22,7 @@ const RankListWrapper = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
 `
 
@@ -33,7 +42,7 @@ const RankList = [
 class Rank extends React.Component {
     render(){
         return (
-            <>
+            <Wrapper>
                 <Title>유저 랭킹</Title>
                 <RankListWrapper>
                     {RankList.map((r, index) =>
@@ -46,7 +55,7 @@ class Rank extends React.Component {
                         />    
                     )}
                 </RankListWrapper>
-            </>
+            </Wrapper>
         )
     }
 }

@@ -5,8 +5,15 @@ import oc from 'open-color';
 
 import ProblemCard from './ProblemCard';
 
-
 import * as ProblemApi from 'api/problem';
+
+const Wrapper = styled.div`
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+`
 
 const Title = styled.h1`
     margin: 0;
@@ -97,7 +104,7 @@ class ProblemList extends React.Component {
 
     render(){
         return (
-            <>
+            <Wrapper>
                 <Title>문제 리스트</Title>
                 <ProblemListWrapper>
                     {testList.map((p, index) => 
@@ -108,7 +115,7 @@ class ProblemList extends React.Component {
                         />    
                     )}
                 </ProblemListWrapper>
-            </>
+            </Wrapper>
         )
     }
 }

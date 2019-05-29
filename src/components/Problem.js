@@ -8,6 +8,13 @@ const numberFormat = (n) => {
     return pad.substring(0, pad.length - str.length) + str;
 }
 
+const Component = styled.div`
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+`
 
 const WhiteBox = styled.div`
     margin: 0 auto;
@@ -80,37 +87,39 @@ const MiniDesc = styled.h3`
 
 const ProblemCard = ({index, title}) => {
     return (
-        <WhiteBox>
-            <Wrapper>
-                <Number>{numberFormat(1)}번 문제</Number>
-                <Title>Dub Test 01</Title>
-                <DescWrapper>
-                    <MiniTitle>문제</MiniTitle>
-                    <Border />
-                    <MiniDesc>정수(integer) 한개를 입력받아 3번 출력해보자.</MiniDesc>
-                </DescWrapper>
-                <DescWrapper>
-                    <MiniTitle>입력</MiniTitle>
-                    <Border />
-                    <MiniDesc>정수 한 개가 입력된다.</MiniDesc>
-                </DescWrapper>
-                <DescWrapper>
-                    <MiniTitle>출력</MiniTitle>
-                    <Border />
-                    <MiniDesc>입력받은 정수를 공백으로 구분해 세 번 출력한다.</MiniDesc>
-                </DescWrapper>
-                <DescWrapper>
-                    <MiniTitle>입력 예시</MiniTitle>
-                    <LongBorder />
-                    <MiniDesc>120</MiniDesc>
-                </DescWrapper>
-                <DescWrapper>
-                    <MiniTitle>출력 예시</MiniTitle>
-                    <LongBorder />
-                    <MiniDesc>120 120 120</MiniDesc>
-                </DescWrapper>
-            </Wrapper>
-        </WhiteBox>
+        <Component className="a">
+            <WhiteBox>
+                <Wrapper>
+                    <Number>{numberFormat(1)}번 문제</Number>
+                    <Title>Dub Test 01</Title>
+                    <DescWrapper>
+                        <MiniTitle>문제</MiniTitle>
+                        <Border />
+                        <MiniDesc>정수(integer) 한개를 입력받아 3번 출력해보자.</MiniDesc>
+                    </DescWrapper>
+                    <DescWrapper>
+                        <MiniTitle>입력</MiniTitle>
+                        <Border />
+                        <MiniDesc>정수 한 개가 입력된다.</MiniDesc>
+                    </DescWrapper>
+                    <DescWrapper>
+                        <MiniTitle>출력</MiniTitle>
+                        <Border />
+                        <MiniDesc>입력받은 정수를 공백으로 구분해 세 번 출력한다.</MiniDesc>
+                    </DescWrapper>
+                    <DescWrapper>
+                        <MiniTitle>입력 예시</MiniTitle>
+                        <LongBorder />
+                        <MiniDesc>120</MiniDesc>
+                    </DescWrapper>
+                    <DescWrapper>
+                        <MiniTitle>출력 예시</MiniTitle>
+                        <LongBorder />
+                        <MiniDesc>120 120 120</MiniDesc>
+                    </DescWrapper>
+                </Wrapper>
+            </WhiteBox>
+        </Component>
     );
 };
 

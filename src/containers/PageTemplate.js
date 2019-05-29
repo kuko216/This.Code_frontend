@@ -66,6 +66,12 @@ const UserIntro = styled.span`
     font-size: 1rem;
     overflow-wrap: break-word;
 `
+const NavText = styled.h3`
+    margin: 0;
+    line-height: 50px;
+    font-size: 1.5rem;
+    font-weight: normal;
+`
 
 const NavItem = styled(NavLink)`
     height: 50px;
@@ -88,8 +94,11 @@ const NavItem = styled(NavLink)`
     }
 
     &.active{
-        color: ${oc.indigo[7]};
-        border-right: 5px solid ${oc.indigo[5]};
+        ${NavText}{
+            font-weight: bold;
+        }
+        color: ${oc.gray[9]};
+        border-right: 5px solid ${oc.gray[7]};
     }
 
     @media(max-width:900px){
@@ -99,18 +108,14 @@ const NavItem = styled(NavLink)`
         text-align: center;
 
         &.active{
-            color: ${oc.indigo[7]};
+            ${NavText}{
+                font-weight: bold;
+            }
+            color: ${oc.gray[9]};
             border-right: none;
-            border-bottom: 5px solid ${oc.indigo[5]};
+            border-bottom: 5px solid ${oc.gray[7]};
         }
     }
-`
-
-const NavText = styled.h3`
-    margin: 0;
-    line-height: 50px;
-    font-size: 1.5rem;
-    font-weight: normal;
 `
 
 class PageTemplate extends React.Component {
