@@ -5,6 +5,8 @@ import oc from 'open-color';
 
 import LogCard from './LogCard';
 
+import * as ProblemApi from 'api/problem';
+
 const Wrapper = styled.div`
     padding: 30px;
     width: 100%;
@@ -40,18 +42,36 @@ const LogList = [
 ]
 
 class Rank extends React.Component {
+
+    state = {
+        LogList: []
+    }
+
+    componentDidMount(){
+        ProblemApi.ShowLog()
+        .then((result) => {
+            this.setState({
+                LogList: result.data
+            });
+            console.log(result);
+        })
+        .catch((result) => {
+            console.log(result);
+        })
+    }
+
     render(){
         return (
             <Wrapper>
                 <Title>풀이 기록</Title>
                 <RankListWrapper>
-                    {LogList.map((r, index) =>
+                    {this.state.LogList.slice(0).reverse().map((r, index) =>
                         <LogCard 
-                            name={r.name}
-                            number={r.number}
-                            succeed={r.succeed}
+                            name={r.username}
+                            number={r.problemnum}
+                            succeed={r.isCorrect}
                             key={index}
-                        />    
+                        />
                     )}
                 </RankListWrapper>
             </Wrapper>

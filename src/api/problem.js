@@ -14,5 +14,4 @@ export const detailProblem = ({ index }) =>
 );
 
 export const ShowLog = () =>
-  axios.get("http://localhost:4000/api/problem/showLog", {
-});
+  axios.get("http://localhost:4000/api/problem/showLog");
