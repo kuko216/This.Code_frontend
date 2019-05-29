@@ -17,26 +17,42 @@ const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     overflow: hidden;
+
+    @media(max-width:900px){
+        flex-direction: column;
+    }
 `
 
 const SideNav = styled.div`
     background-color: white;
-    height: 100%;
-    min-width: 300px;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    min-width: 300px;
+
+    @media(max-width:900px){
+        flex-direction: row;
+        width: 100%;
+        max-height: 55px;
+        min-height: 55px;
+    }
 `
 
 const Content = styled.div`
     width: 100%;
     padding: 30px;
     overflow: auto;
+    box-sizing: border-box;
 `
 
 const UserProfile = styled.div`
     padding: 30px;
     display: flex;
     flex-direction: column;
+
+    @media(max-width:900px){
+        display: none;
+    }
 `
 
 const Username = styled.h1`
@@ -73,6 +89,19 @@ const NavItem = styled(NavLink)`
     &.active{
         color: ${oc.indigo[7]};
         border-right: 5px solid ${oc.indigo[5]};
+    }
+
+    @media(max-width:900px){
+        padding-left: 0px;
+        height: 100%;
+        width: 25%;
+        text-align: center;
+
+        &.active{
+            color: ${oc.indigo[7]};
+            border-right: none;
+            border-bottom: 5px solid ${oc.indigo[5]};
+        }
     }
 `
 

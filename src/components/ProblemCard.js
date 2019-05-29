@@ -49,6 +49,7 @@ const CardWrapper = styled.div`
 const Index = styled.h3`
     margin: 0;
     margin-right: 30px;
+    margin-left: 10px;
     color: ${oc.indigo[7]};
 `
 
