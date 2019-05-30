@@ -52,6 +52,7 @@ const Index = styled.h3`
     margin-right: 30px;
     margin-left: 10px;
     color: ${oc.red[5]};
+    ${props => props.user?`color:${oc.green[5]}`:``};
 `
 
 const Title = styled.h3`
@@ -78,12 +79,12 @@ const numberFormat = (n) => {
     return pad.substring(0, pad.length - str.length) + str;
 }
 
-const ProblemCard = ({index, title, tryNum, corNum}) => {
+const ProblemCard = ({index, title, tryNum, corNum, user}) => {
     return (
 
         <WhiteBox to={"/problem/"+index}>
             <CardWrapper>
-                <Index>{numberFormat(index)}</Index>
+                <Index user={user}>{numberFormat(index)}</Index>
                 <Title>{title}</Title>
                 <Spacer />
                 <TryNum>시도 횟수 {tryNum}</TryNum>

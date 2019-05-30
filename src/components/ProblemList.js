@@ -102,6 +102,7 @@ class ProblemList extends React.Component {
 
         ProblemApi.getList({token})
         .then((result) => {
+            console.log(result);
             this.setState({
                 problemList: result.data
             });
@@ -120,6 +121,7 @@ class ProblemList extends React.Component {
                         <ProblemCard 
                             index={index+1}
                             title={p.name}
+                            user={p.user}
                             tryNum={p.tryNum}
                             corNum={p.corNum}
                             key={index} 

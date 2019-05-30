@@ -146,8 +146,8 @@ const ToLogin = styled(Link)`
 @observer
 class PageTemplate extends React.Component {
     ReturnUserProfile = () => {
-        const { username, description } = this.props.userStore;
-        if(username && description){
+        const { token, username, description } = this.props.userStore;
+        if( token ){
             return (
                 <UserProfile>
                     <Username>{username}</Username>
